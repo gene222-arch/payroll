@@ -13,6 +13,35 @@ class Employee
         return $employees;
     }
 
+    public static function allBySupervisor(int $supervisorID)
+    {
+        $sql = "SELECT 
+            *,
+            employees.id as empid
+        FROM 
+            employee_supervisors
+        INNER JOIN 
+            employees 
+        ON 
+            employees.id = employee_supervisors.employee_id
+        INNER JOIN 
+            `position`
+        ON 
+            `position`.id = employees.position_id
+        LEFT JOIN 
+            schedules 
+        ON 
+            schedules.id = employees.schedule_id
+        WHERE 
+            employee_supervisors.supervisor_id = '". $supervisorID ."'";
+
+        $employees = self::connection()
+            ->query($sql)
+            ->fetch_all(1);
+
+        return $employees;
+    }
+
     public static function connection()
     {
         try {

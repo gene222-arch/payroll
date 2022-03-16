@@ -113,7 +113,25 @@
                     </thead>
                     <tbody>
                       <?php
-                        $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN position ON position.id=employees.position_id LEFT JOIN schedules ON schedules.id=employees.schedule_id";
+                        $sql = "SELECT 
+                              *,
+                              employees.id as empid
+                            FROM 
+                              employee_supervisors
+                            INNER JOIN 
+                              employees 
+                            ON 
+                              employees.id = employee_supervisors.employee_id
+                            INNER JOIN 
+                              `position`
+                            ON 
+                              `position`.id = employees.position_id
+                            LEFT JOIN 
+                              schedules 
+                            ON 
+                              schedules.id = employees.schedule_id
+                            WHERE 
+                              employee_supervisors.supervisor_id = '". $_SESSION['admin'] ."'";
                         $query = $conn->query($sql);
                         while($row = $query->fetch_assoc()){
                           ?>

@@ -18,6 +18,9 @@
           <li class="nav-item">
             <a href="attendance.php" class="nav-link">Attendance</a>
           </li>
+          <li class="nav-item">
+            <a href="supervisors.php" class="nav-link">Supervisor</a>
+          </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Employee</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">

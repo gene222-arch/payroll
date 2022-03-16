@@ -154,7 +154,7 @@
 				<select class="form-control" name="employee" id="exampleFormControlSelect1">
 					<option value="0">Employees</option>
 					<?php 
-						foreach (Employee::all() as $employee) {
+						foreach (Employee::allBySupervisor($_SESSION['admin']) as $employee) {
 							?>  
 								<option value="<?= $employee['employee_id'] ?>">
 								<?= "{$employee['employee_id']} - {$employee['firstname']}" ?>
